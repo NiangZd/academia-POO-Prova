@@ -1,5 +1,7 @@
 package persistencia;
 import aplicacao.Aluno;
+import aplicacao.PagamentoMensalidade;
+
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +38,32 @@ public class AlunoDAO {
             System.out.println("ERRO NO METODO: " + e.getMessage());
         } finally {
             con.desconectar();
+            addPagamentoMensalidade(a1.getEmail());
+        }
+    }
+
+    public static void addPagamentoMensalidade(String email) {
+        PagamentoMensalidade pm = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM alunos WHERE email = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setString(1, email);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                int id_aluno = rs.getInt("id_aluno");
+
+                pm = new PagamentoMensalidade(id_aluno, "A DEFINIR", 60);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o Instrutor: " + e.getMessage());
+        } finally {
+            con.desconectar();
+            PagamentoMensalidadeDAO.inserirPagamentoMensalidade(pm);
         }
     }
 
@@ -43,7 +71,7 @@ public class AlunoDAO {
         try {
             con.conectar();
     
-            String sql = "UPDATE alunos SET nome = ?, idade = ?, peso = ?, email = ?, senha?  WHERE id = ?";
+            String sql = "UPDATE alunos SET nome = ?, idade = ?, peso = ?, email = ?, senha = ?  WHERE id_aluno = ?";
             PreparedStatement instrucao = con.getCon().prepareStatement(sql);
             
             instrucao.setString(1, a1.getNome());
@@ -51,6 +79,7 @@ public class AlunoDAO {
             instrucao.setFloat(3, a1.getPeso());
             instrucao.setString(4, a1.getEmail());
             instrucao.setString(5, a1.getSenha());
+            instrucao.setInt(6, id);
     
             int linhasAfetadas = instrucao.executeUpdate();
     
@@ -68,9 +97,9 @@ public class AlunoDAO {
     
     public static void deletarAlunos(int id) {
         try {
+            FichaTreinoDAO.deletarFichaTreinosPA(id);
             con.conectar();
-    
-            String sql = "DELETE FROM alunos WHERE id = ?";
+            String sql = "DELETE FROM alunos WHERE id_aluno = ?";
             PreparedStatement instrucao = con.getCon().prepareStatement(sql);
             
             instrucao.setInt(1, id);
@@ -95,7 +124,7 @@ public class AlunoDAO {
         try {
             con.conectar();
 
-            String sql = "SELECT * FROM alunos WHERE id = ?";
+            String sql = "SELECT * FROM alunos WHERE id_aluno = ?";
             PreparedStatement instrucao = con.getCon().prepareStatement(sql);
             instrucao.setInt(1, id);
 

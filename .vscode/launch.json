@@ -22,7 +22,8 @@
             "name": "Principal",
             "request": "launch",
             "mainClass": "visao.Principal",
-            "projectName": "academia_java_6646614a"
+            "projectName": "academia_java_6646614a",
+            "vmArgs": "--module-path \"C:/Users/vg263/OneDrive/Documentos/ESTUDOS/LISTA DE POO/LIBFX/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

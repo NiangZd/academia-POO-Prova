@@ -1,33 +1,15 @@
 package aplicacao;
 
-public class Aluno {
-    private int id;
-    private String nome;
+public class Aluno extends Usuario{
     private int idade;
     private Float peso;
-    private String email;
-    private String senha;
 
-    public Aluno(String nome, int idade, Float peso, String email, String senha) {
-        this.nome = nome;
+    public Aluno(String nome, int idade, float peso, String email, String senha) {
+        super(nome, email, senha);
         this.idade = idade;
         this.peso = peso;
-        this.email = email;
-        this.senha = senha;
     }
-    
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+
     public int getIdade() {
         return idade;
     }
@@ -37,20 +19,8 @@ public class Aluno {
     public Float getPeso() {
         return peso;
     }
-    public void setPeso(float peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
 }

@@ -1,16 +1,45 @@
 package visao;
 
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import aplicacao.*;
 import persistencia.*;
-import java.util.Scanner;
-import java.util.ArrayList;
 
-public class Principal {
+public class Principal extends Application{
 	public static void main(String[] args) {
 
-		Aluno a1 = new Aluno("Jão", 18, 72.5f , "jaozindelas@gmai.com", "jao123");
+		Conexao c1 = new Conexao();
+		AlunoDAO.setConexao(c1);
+		InstrutorDAO.setConexao(c1);
+		FichaTreinoDAO.setConexao(c1);
+		AlunoInstrutorDAO.setConexao(c1);
+		PagamentoMensalidadeDAO.setCon(c1);
 
-		AlunoDAO.inserirAluno(a1);
+		launch(args);
+
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("ACADEMIA");
+		Button botao = new Button("CLIQUE AQUI");
+		botao.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("Clicou no botão");		
+			}
+		});
+
+		StackPane root = new StackPane();
+		root.getChildren().addAll(botao);
+		primaryStage.setScene(new Scene(root, 300, 250));
+		primaryStage.show();
 
 	}
 }
