@@ -4,11 +4,17 @@ public class Aluno extends Usuario{
     private int idade;
     private Float peso;
 
+    public Aluno(String nome, String email, String senha) {
+        super(nome, email, senha);
+    }
+
     public Aluno(String nome, int idade, float peso, String email, String senha) {
         super(nome, email, senha);
         this.idade = idade;
         this.peso = peso;
     }
+
+    
 
     public int getIdade() {
         return idade;

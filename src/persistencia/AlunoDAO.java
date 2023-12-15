@@ -204,5 +204,36 @@ public class AlunoDAO {
         }
     
         return listaAlunos;
-    }   
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    // FUNÇÕES JAVAFX LOGIN REGISTRO //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Aluno buscarALogin(String email) {
+        Aluno a1 = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM alunos WHERE email = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setString(1, email);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+            
+                a1 = new Aluno(nome, email, senha);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o aluno: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return a1;
+    }
+
 }

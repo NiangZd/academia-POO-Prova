@@ -32,33 +32,38 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.LoginController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <Label layoutX="198.0" layoutY="71.0" text="BEM VINDO A ACADEMIA">
+         <children>
+            <Button fx:id="btnLoginAluno" layoutX="124.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToLoginAluno" prefHeight="44.0" prefWidth="139.0" text="Login Aluno">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="20.0" />
                </font>
-            </Label>
-            <Label layoutX="166.0" layoutY="128.0" text="FAÇA LOGIN OU REGISTRE-SE PARA PROSSEGUIR">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="190.0" layoutY="223.0" mnemonicParsing="false" text="LOGIN" textAlignment="CENTER">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
             </Button>
-      </children>
+            <Button fx:id="btnLoginInstrutor" layoutX="387.0" layoutY="290.0" mnemonicParsing="false" onAction="#goToLoginInstrutor" prefHeight="44.0" prefWidth="147.0" text="Login Instrutor">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label layoutX="159.0" layoutY="44.0" text="ACADEMIA PROVENTURE">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="184.0" layoutY="105.0" text="FAÇA LOGIN COMO ALUNO OU COMO INSTRUTOR" />
+            <Label layoutX="193.0" layoutY="151.0" text="Email:" />
+            <Label layoutX="190.0" layoutY="206.0" text="Senha:" />
+            <TextField fx:id="labelEmail" layoutX="193.0" layoutY="175.0" prefHeight="25.0" prefWidth="257.0" />
+            <TextField fx:id="labelSenha" layoutX="193.0" layoutY="229.0" prefHeight="25.0" prefWidth="257.0" />
+         </children>
     </AnchorPane>
   </children>
 </VBox>

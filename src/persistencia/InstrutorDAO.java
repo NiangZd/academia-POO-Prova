@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class InstrutorDAO {
+public class InstrutorDAO{
     private static Conexao con;
 
     public static void setConexao(Conexao conexao) {
@@ -169,4 +169,35 @@ public class InstrutorDAO {
         }
         return listaInstrutors;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    // FUNÇÕES JAVAFX LOGIN REGISTRO //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Instrutor buscarALogin(String email) {
+        Instrutor i1 = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM instrutores WHERE email = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setString(1, email);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+            
+                i1 = new Instrutor(nome, email, senha);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o aluno: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return i1;
+    }
+
 }

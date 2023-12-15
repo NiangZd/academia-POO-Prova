@@ -2,8 +2,6 @@ package persistencia;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import aplicacao.Instrutor;
 import aplicacao.PagamentoMensalidade;
 
 public class PagamentoMensalidadeDAO {

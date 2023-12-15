@@ -20,7 +20,7 @@ public class Conexao {
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(caminho, usuario, senha);
-            System.out.println("Conexão realizada com sucesso!");
+            //System.out.println("Conexão realizada com sucesso!");
         } catch (Exception e) {
             System.out.println("Erro na conexão: " + e.getMessage());
         }
@@ -30,7 +30,7 @@ public class Conexao {
         if (con != null) {
             try {
                 con.close();
-                System.out.println("Conexão encerrada com sucesso!");
+                //System.out.println("Conexão encerrada com sucesso!");
             } catch (SQLException e) {
                 System.out.println("Erro ao encerrar a conexão: " + e.getMessage());
             }
