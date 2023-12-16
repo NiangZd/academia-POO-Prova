@@ -9,6 +9,22 @@ import java.util.ArrayList;
 public class InstrutorDAO{
     private static Conexao con;
 
+    private static final String tokenAccess = "FAsd#895SFD243242"; 
+
+    private static boolean verif = false;
+
+   public static String getTokenaccess() {
+    return tokenAccess;
+}
+
+ public static boolean isVerif() {
+        return verif;
+    }
+
+    public static void setVerif(boolean verif) {
+        InstrutorDAO.verif = verif;
+    }
+
     public static void setConexao(Conexao conexao) {
         con = conexao;
     }
@@ -186,10 +202,11 @@ public class InstrutorDAO{
             ResultSet rs = instrucao.executeQuery();
 
             if (rs.next()) {
+                int id = rs.getInt("id_instrutor");
                 String nome = rs.getString("nome");
                 String senha = rs.getString("senha");
             
-                i1 = new Instrutor(nome, email, senha);
+                i1 = new Instrutor(nome, email, senha, id);
             }
 
         } catch (SQLException e) {
@@ -198,6 +215,45 @@ public class InstrutorDAO{
             con.desconectar();
         }
         return i1;
+    }
+
+    public static void registrarInstrutor(Instrutor i1) { 
+        try {
+            con.conectar();
+            setVerif(false);
+    
+            // Verificar se o email já está cadastrado
+            PreparedStatement verificarEmailStmt = con.getCon().prepareStatement("SELECT COUNT(*) FROM instrutores WHERE email = ?");
+            verificarEmailStmt.setString(1, i1.getEmail());
+            ResultSet resultSet = verificarEmailStmt.executeQuery();
+    
+            resultSet.next();
+            int count = resultSet.getInt(1);
+    
+            if (count > 0) {
+                System.out.println("Já existe um instrutor cadastrado com o email fornecido. Inserção não realizada.");
+            } else {
+                // Realizar a inserção do aluno
+                PreparedStatement insercaoStmt = con.getCon().prepareStatement("INSERT INTO instrutores (nome, email, senha) VALUES (?, ?, ?)");
+                insercaoStmt.setString(1, i1.getNome());
+                insercaoStmt.setString(2, i1.getEmail());
+                insercaoStmt.setString(3, i1.getSenha());
+    
+                int linhasAfetadas = insercaoStmt.executeUpdate();
+    
+                if (linhasAfetadas > 0) {
+                    System.out.println("Inserção realizada com sucesso.");
+                    setVerif(true);
+                } else {
+                    System.out.println("Nenhuma linha afetada durante a inserção.");
+                }
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("ERRO NO METODO: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
     }
 
 }

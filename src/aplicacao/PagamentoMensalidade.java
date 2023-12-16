@@ -36,6 +36,4 @@ public class PagamentoMensalidade {
     public void setValor(int valor) {
         this.valor = valor;
     }
-
-
 }

@@ -63,6 +63,11 @@
             <Label layoutX="190.0" layoutY="206.0" text="Senha:" />
             <TextField fx:id="labelEmail" layoutX="193.0" layoutY="175.0" prefHeight="25.0" prefWidth="257.0" />
             <TextField fx:id="labelSenha" layoutX="193.0" layoutY="229.0" prefHeight="25.0" prefWidth="257.0" />
+            <Button fx:id="btnVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltarNow" prefHeight="44.0" prefWidth="83.0" text="VOLTAR">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>

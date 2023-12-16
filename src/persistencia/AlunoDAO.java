@@ -9,6 +9,16 @@ import java.util.ArrayList;
 
 public class AlunoDAO {
 
+    private static boolean verif = false;
+
+    public static boolean isVerif() {
+        return verif;
+    }
+
+    public static void setVerif(boolean verif) {
+        AlunoDAO.verif = verif;
+    }
+
     private static Conexao con;
 
     public static void setConexao(Conexao conexao) {
@@ -222,10 +232,10 @@ public class AlunoDAO {
             ResultSet rs = instrucao.executeQuery();
 
             if (rs.next()) {
+                int id = rs.getInt("id_aluno");
                 String nome = rs.getString("nome");
                 String senha = rs.getString("senha");
-            
-                a1 = new Aluno(nome, email, senha);
+                a1 = new Aluno(id, nome, email, senha);
             }
 
         } catch (SQLException e) {
@@ -234,6 +244,73 @@ public class AlunoDAO {
             con.desconectar();
         }
         return a1;
+    }
+
+    public static void registrarAluno(Aluno a1) { 
+        try {
+            con.conectar();
+            setVerif(false);
+    
+            // Verificar se o email já está cadastrado
+            PreparedStatement verificarEmailStmt = con.getCon().prepareStatement("SELECT COUNT(*) FROM alunos WHERE email = ?");
+            verificarEmailStmt.setString(1, a1.getEmail());
+            ResultSet resultSet = verificarEmailStmt.executeQuery();
+    
+            resultSet.next();
+            int count = resultSet.getInt(1);
+    
+            if (count > 0) {
+                System.out.println("Já existe um aluno cadastrado com o email fornecido. Inserção não realizada.");
+            } else {
+                // Realizar a inserção do aluno
+                PreparedStatement insercaoStmt = con.getCon().prepareStatement("INSERT INTO alunos (nome, email, senha) VALUES (?, ?, ?)");
+                insercaoStmt.setString(1, a1.getNome());
+                insercaoStmt.setString(2, a1.getEmail());
+                insercaoStmt.setString(3, a1.getSenha());
+    
+                int linhasAfetadas = insercaoStmt.executeUpdate();
+    
+                if (linhasAfetadas > 0) {
+                    System.out.println("Inserção realizada com sucesso.");
+                    setVerif(true);
+                    // Adicionar pagamento de mensalidade
+                    addPagamentoMensalidade(a1.getEmail());
+                } else {
+                    System.out.println("Nenhuma linha afetada durante a inserção.");
+                }
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("ERRO NO METODO: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+    }
+
+    public static void inserirInfoExtra(String email, int idade, float peso) {
+        try {
+            con.conectar();
+
+            String sql = "UPDATE alunos SET idade = ?, peso = ? WHERE email = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+
+            instrucao.setInt(1, idade);
+            instrucao.setFloat(2, peso);
+            instrucao.setString(3, email);
+
+            int linhasAfetadas = instrucao.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Alteração realizada com sucesso.");
+            } else {
+                System.out.println("Nenhuma linha afetada durante a inserção.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO NO METODO: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
     }
 
 }

@@ -1,8 +1,18 @@
 package aplicacao;
 
 public class Aluno extends Usuario{
+    private int id;
     private int idade;
     private Float peso;
+
+    public Aluno(){
+        
+    }
+
+    public Aluno(int id, String nome, String email, String senha) {
+        super(nome, email, senha);
+        this.id = id;
+    }
 
     public Aluno(String nome, String email, String senha) {
         super(nome, email, senha);
@@ -14,7 +24,13 @@ public class Aluno extends Usuario{
         this.peso = peso;
     }
 
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getIdade() {
         return idade;

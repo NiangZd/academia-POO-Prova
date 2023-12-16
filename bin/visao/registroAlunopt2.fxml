@@ -33,31 +33,36 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.ControllerTelaInicial">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.RegistroAlunopt2Controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="61.0" layoutY="54.0" prefHeight="54.0" prefWidth="518.0" text="BEM VINDO A ACADEMIA PROVENTURE">
+            <Label layoutX="190.0" layoutY="25.0" text="CONCLUA SEU CADASTRO">
                <font>
-                  <Font name="System Bold" size="27.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="130.0" layoutY="136.0" text="FAÇA LOGIN OU REGISTRE-SE PARA ACESSAR O PAINEL DA ACADEMIA" />
-            <Button fx:id="btnLogin" layoutX="104.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToAreaLogin" prefHeight="34.0" prefWidth="142.0" text="LOGIN">
+            <Label layoutX="157.0" layoutY="106.0" text="Idade:" />
+            <TextField fx:id="textFieldIdade" layoutX="99.0" layoutY="132.0" />
+            <Label layoutX="451.0" layoutY="106.0" text="Peso:" />
+            <TextField fx:id="textFieldPeso" layoutX="391.0" layoutY="132.0" />
+            <Label layoutX="128.0" layoutY="213.0" text="Data pagamento:" />
+            <Label layoutX="449.0" layoutY="213.0" text="Plano:" />
+            <Button fx:id="btnConcluirCad" layoutX="216.0" layoutY="319.0" mnemonicParsing="false" onAction="#concluirCadastroUser" prefHeight="46.0" prefWidth="208.0" text="CONCLUIR CADASTRO">
                <font>
-                  <Font size="23.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnRegistro" layoutX="385.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToRegistro" text="REGISTRE-SE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Button>
+            <ChoiceBox fx:id="choiceBoxPlano" layoutX="391.0" layoutY="240.0" prefWidth="150.0" />
+            <DatePicker fx:id="datePickerDataPag" layoutX="87.0" layoutY="240.0" />
          </children>
     </AnchorPane>
   </children>

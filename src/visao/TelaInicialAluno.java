@@ -8,23 +8,33 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class ControllerTelaInicial {
+public class TelaInicialAluno {
 
     @FXML
-    private Button btnLogin;
+    private Button btnFichaTreino;
 
     @FXML
-    private Button btnRegistro;
+    private Button btnInfoPessoais;
 
     @FXML
-    void goToAreaLogin(ActionEvent event) {
-        Stage stage = (Stage) btnLogin.getScene().getWindow();
+    private Button btnInstrutores;
+
+    @FXML
+    private Button btnSair;
+
+    @FXML
+    private Label labelUser;
+
+    @FXML
+    void sairSistema(ActionEvent event) {
+        Stage stage = (Stage) btnInstrutores.getScene().getWindow();
 
         try {
             // Carrega o arquivo FXML da nova janela
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("telaInicial.fxml"));
             Parent root = loader.load();
 
             // Cria uma nova cena
@@ -38,16 +48,25 @@ public class ControllerTelaInicial {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void verifFicha(ActionEvent event) {
 
     }
 
     @FXML
-    void goToRegistro(ActionEvent event) {
-        Stage stage = (Stage) btnRegistro.getScene().getWindow();
+    void verifInfoPessoais(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verifInstrutores(ActionEvent event) {
+        Stage stage = (Stage) btnInstrutores.getScene().getWindow();
 
         try {
             // Carrega o arquivo FXML da nova janela
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("tipoReg.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AcessoDeInstrutores.fxml"));
             Parent root = loader.load();
 
             // Cria uma nova cena
