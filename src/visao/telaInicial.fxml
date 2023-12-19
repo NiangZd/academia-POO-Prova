@@ -40,22 +40,22 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.ControllerTelaInicial">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #201F1B;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="61.0" layoutY="54.0" prefHeight="54.0" prefWidth="518.0" text="BEM VINDO A ACADEMIA PROVENTURE">
+            <Label layoutX="61.0" layoutY="54.0" prefHeight="54.0" prefWidth="518.0" text="BEM VINDO A ACADEMIA PROVENTURE" textFill="#ff5e1e">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="130.0" layoutY="136.0" text="FAÇA LOGIN OU REGISTRE-SE PARA ACESSAR O PAINEL DA ACADEMIA" />
-            <Button fx:id="btnLogin" layoutX="104.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToAreaLogin" prefHeight="34.0" prefWidth="142.0" text="LOGIN">
+            <Label layoutX="130.0" layoutY="136.0" text="FAÇA LOGIN OU REGISTRE-SE PARA ACESSAR O PAINEL DA ACADEMIA" textFill="#ff5e1e" />
+            <Button fx:id="btnLogin" layoutX="104.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToAreaLogin" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #ff5e1e;" text="LOGIN" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
+                  <Font name="System Bold" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="btnRegistro" layoutX="385.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToRegistro" text="REGISTRE-SE">
+            <Button fx:id="btnRegistro" layoutX="385.0" layoutY="236.0" mnemonicParsing="false" onAction="#goToRegistro" style="-fx-background-color: #ff5e1e;" text="REGISTRE-SE" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
+                  <Font name="System Bold" size="23.0" />
                </font>
             </Button>
          </children>

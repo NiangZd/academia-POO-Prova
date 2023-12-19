@@ -40,26 +40,26 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.ControllerRegistro">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #201F1B;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="86.0" layoutY="103.0" text="ESCOLHA COMO DESEJA REGISTRAR-SE">
+            <Label layoutX="86.0" layoutY="103.0" text="ESCOLHA COMO DESEJA REGISTRAR-SE" textFill="#ff5e1e">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="regisAluno" layoutX="155.0" layoutY="234.0" mnemonicParsing="false" onAction="#goToRegAluno" text="ALUNO">
+            <Button fx:id="regisAluno" layoutX="155.0" layoutY="234.0" mnemonicParsing="false" onAction="#goToRegAluno" style="-fx-background-color: #ff5e1e;" text="ALUNO" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
+                  <Font name="System Bold" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="regisInstrutor" layoutX="353.0" layoutY="234.0" mnemonicParsing="false" onAction="#goToRegInstrutor" text="INSTRUTOR">
+            <Button fx:id="regisInstrutor" layoutX="353.0" layoutY="234.0" mnemonicParsing="false" onAction="#goToRegInstrutor" style="-fx-background-color: #ff5e1e;" text="INSTRUTOR" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
+                  <Font name="System Bold" size="23.0" />
                </font>
             </Button>
-            <Button fx:id="btnVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltarNow" prefHeight="44.0" prefWidth="83.0" text="VOLTAR">
+            <Button fx:id="btnVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltarNow" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #ff5e1e;" text="VOLTAR" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>

@@ -42,27 +42,27 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.FichaController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #201F1B;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="163.0" layoutY="32.0" text="SUA FICHA DE TREINO">
+            <Label layoutX="163.0" layoutY="32.0" text="SUA FICHA DE TREINO" textFill="#ff5e1e">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="btnConcluir" layoutX="234.0" layoutY="230.0" mnemonicParsing="false" onAction="#concluirTreino" prefHeight="48.0" prefWidth="147.0" text="CONCLUIR">
+            <Button fx:id="btnConcluir" layoutX="242.0" layoutY="235.0" mnemonicParsing="false" onAction="#concluirTreino" prefHeight="48.0" prefWidth="130.0" style="-fx-background-color: #ff5e1e;" text="CONCLUIR" textFill="WHITE">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="19.0" />
                </font>
             </Button>
-            <Label layoutX="89.0" layoutY="91.0" text="Data Inicial:" />
-            <Label layoutX="92.0" layoutY="173.0" text="Data Final:" />
+            <Label layoutX="89.0" layoutY="91.0" text="Data Inicial:" textFill="#ff5e1e" />
+            <Label layoutX="92.0" layoutY="173.0" text="Data Final:" textFill="#ff5e1e" />
             <TextField fx:id="fieldDataInicio" disable="true" editable="false" layoutX="45.0" layoutY="121.0" />
             <TextField fx:id="fieldDataFim" disable="true" editable="false" layoutX="46.0" layoutY="200.0" />
-            <Label layoutX="457.0" layoutY="91.0" text="Descrição do treino:" />
-            <TextArea fx:id="fieldDescFicha" disable="true" editable="false" layoutX="410.0" layoutY="125.0" prefHeight="257.0" prefWidth="200.0" />
-            <Button fx:id="btnVoltar" layoutX="229.0" layoutY="311.0" mnemonicParsing="false" onAction="#voltarTela" prefHeight="48.0" prefWidth="147.0" text="VOLTAR">
+            <Label layoutX="457.0" layoutY="91.0" text="Descrição do treino:" textFill="#ff5e1e" />
+            <TextArea fx:id="fieldDescFicha" disable="true" editable="false" layoutX="410.0" layoutY="121.0" prefHeight="257.0" prefWidth="200.0" />
+            <Button fx:id="btnVoltar" layoutX="242.0" layoutY="310.0" mnemonicParsing="false" onAction="#voltarTela" prefHeight="48.0" prefWidth="130.0" style="-fx-background-color: #ff5e1e;" text="VOLTAR" textFill="WHITE">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="19.0" />
                </font>
             </Button>
          </children>

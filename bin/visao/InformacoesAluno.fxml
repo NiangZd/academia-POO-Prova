@@ -41,33 +41,39 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.InformacoesAlunoController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #201F1B;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="180.0" layoutY="29.0" text="EXIBINDO INFORMAÇÕES">
+            <Label layoutX="180.0" layoutY="29.0" text="EXIBINDO INFORMAÇÕES" textFill="#ff5e1e">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
             </Label>
-            <Label layoutX="73.0" layoutY="113.0" text="Matrícula:" />
+            <Label layoutX="73.0" layoutY="113.0" text="Matrícula:" textFill="#ff5e1e" />
             <TextField fx:id="fieldMatricula" disable="true" editable="false" layoutX="24.0" layoutY="139.0" />
-            <Label layoutX="80.0" layoutY="176.0" text="Nome:" />
+            <Label layoutX="80.0" layoutY="176.0" text="Nome:" textFill="#ff5e1e" />
             <TextField fx:id="fieldNome" layoutX="24.0" layoutY="200.0" />
-            <Label layoutX="82.0" layoutY="240.0" text="Idade:" />
+            <Label layoutX="82.0" layoutY="240.0" text="Idade:" textFill="#ff5e1e" />
             <TextField fx:id="fieldIdade" layoutX="24.0" layoutY="263.0" />
-            <Label layoutX="305.0" layoutY="113.0" text="Email:" />
+            <Label layoutX="305.0" layoutY="113.0" text="Email:" textFill="#ff5e1e" />
             <TextField fx:id="fieldEmail" layoutX="246.0" layoutY="139.0" />
             <TextField fx:id="fieldPeso" layoutX="246.0" layoutY="200.0" />
             <TextField fx:id="fieldSenha" layoutX="246.0" layoutY="263.0" />
-            <Label layoutX="307.0" layoutY="176.0" text="Peso:" />
-            <Label layoutX="303.0" layoutY="240.0" text="Senha:" />
-            <Label layoutX="500.0" layoutY="113.0" text="Data Pagamento:" />
+            <Label layoutX="307.0" layoutY="176.0" text="Peso:" textFill="#ff5e1e" />
+            <Label layoutX="303.0" layoutY="240.0" text="Senha:" textFill="#ff5e1e" />
+            <Label layoutX="500.0" layoutY="113.0" text="Data Pagamento:" textFill="#ff5e1e" />
             <TextField fx:id="fieldPagamento" disable="true" editable="false" layoutX="471.0" layoutY="139.0" />
-            <Label layoutX="529.0" layoutY="176.0" text="Plano:" />
+            <Label layoutX="529.0" layoutY="176.0" text="Plano:" textFill="#ff5e1e" />
             <TextField fx:id="fieldPlano" disable="true" editable="false" layoutX="472.0" layoutY="200.0" />
-            <Label layoutX="490.0" layoutY="240.0" text="Instrutor responsável" />
+            <Label layoutX="490.0" layoutY="240.0" text="Instrutor responsável" textFill="#ff5e1e" />
             <TextField fx:id="fieldInstrutor" disable="true" editable="false" layoutX="472.0" layoutY="263.0" />
-            <Button fx:id="btnAtualizar" layoutX="342.0" layoutY="323.0" mnemonicParsing="false" onAction="#atualizarInfo" prefHeight="44.0" prefWidth="130.0" text="ATUALIZAR" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="btnVoltar" layoutX="173.0" layoutY="323.0" mnemonicParsing="false" onAction="#voltarTela" prefHeight="44.0" prefWidth="130.0" text="VOLTAR" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="btnAtualizar" layoutX="342.0" layoutY="323.0" mnemonicParsing="false" onAction="#atualizarInfo" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #ff5e1e;" text="ATUALIZAR" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="btnVoltar" layoutX="173.0" layoutY="323.0" mnemonicParsing="false" onAction="#voltarTela" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #ff5e1e;" text="VOLTAR" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
     </AnchorPane>
   </children>

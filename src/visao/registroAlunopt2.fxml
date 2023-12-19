@@ -43,22 +43,22 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.RegistroAlunopt2Controller">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #201F1B;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="190.0" layoutY="25.0" text="CONCLUA SEU CADASTRO">
+            <Label layoutX="190.0" layoutY="25.0" text="CONCLUA SEU CADASTRO" textFill="#ff5e1e">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="157.0" layoutY="106.0" text="Idade:" />
+            <Label layoutX="157.0" layoutY="106.0" text="Idade:" textFill="#ff5e1e" />
             <TextField fx:id="textFieldIdade" layoutX="99.0" layoutY="132.0" />
-            <Label layoutX="451.0" layoutY="106.0" text="Peso:" />
+            <Label layoutX="451.0" layoutY="106.0" text="Peso:" textFill="#ff5e1e" />
             <TextField fx:id="textFieldPeso" layoutX="391.0" layoutY="132.0" />
-            <Label layoutX="128.0" layoutY="213.0" text="Data pagamento:" />
-            <Label layoutX="449.0" layoutY="213.0" text="Plano:" />
-            <Button fx:id="btnConcluirCad" layoutX="216.0" layoutY="319.0" mnemonicParsing="false" onAction="#concluirCadastroUser" prefHeight="46.0" prefWidth="208.0" text="CONCLUIR CADASTRO">
+            <Label layoutX="128.0" layoutY="213.0" text="Data pagamento:" textFill="#ff5e1e" />
+            <Label layoutX="449.0" layoutY="213.0" text="Plano:" textFill="#ff5e1e" />
+            <Button fx:id="btnConcluirCad" layoutX="216.0" layoutY="319.0" mnemonicParsing="false" onAction="#concluirCadastroUser" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: #ff5e1e;" text="CONCLUIR CADASTRO" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Button>
             <ChoiceBox fx:id="choiceBoxPlano" layoutX="391.0" layoutY="240.0" prefWidth="150.0" />
