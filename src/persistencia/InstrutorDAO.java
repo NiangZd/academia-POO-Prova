@@ -56,21 +56,25 @@ public class InstrutorDAO{
     public static void alterarInstrutor(int id, Instrutor i1) {
         try {
             con.conectar();
-
-            String sql = "UPDATE instrutores SET nome = ?, email = ?, senha = ?  WHERE id_instrutor = ?";
-            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
-
-            instrucao.setString(1, i1.getNome());
-            instrucao.setString(2, i1.getEmail());
-            instrucao.setString(3, i1.getSenha());
-            instrucao.setInt(4, id);
-
-            int linhasAfetadas = instrucao.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-                System.out.println("Alteração realizada com sucesso.");
+    
+            if (!isEmailExistenteParaOutroInstrutor(id, i1.getEmail())) {
+                String sql = "UPDATE instrutores SET nome = ?, email = ?, senha = ?  WHERE id_instrutor = ?";
+                PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+    
+                instrucao.setString(1, i1.getNome());
+                instrucao.setString(2, i1.getEmail());
+                instrucao.setString(3, i1.getSenha());
+                instrucao.setInt(4, id);
+    
+                int linhasAfetadas = instrucao.executeUpdate();
+    
+                if (linhasAfetadas > 0) {
+                    System.out.println("Alteração realizada com sucesso.");
+                } else {
+                    System.out.println("Nenhuma linha afetada durante a alteração.");
+                }
             } else {
-                System.out.println("Nenhuma linha afetada durante a alteração.");
+                System.out.println("Erro: O email já está cadastrado para outro instrutor.");
             }
         } catch (SQLException e) {
             System.out.println("ERRO NO METODO: " + e.getMessage());
@@ -78,6 +82,21 @@ public class InstrutorDAO{
             con.desconectar();
         }
     }
+    
+    private static boolean isEmailExistenteParaOutroInstrutor(int idInstrutorAtual, String novoEmail) throws SQLException {
+        String sql = "SELECT COUNT(*) AS total FROM instrutores WHERE email = ? AND id_instrutor != ?";
+        PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+        instrucao.setString(1, novoEmail);
+        instrucao.setInt(2, idInstrutorAtual);
+    
+        ResultSet rs = instrucao.executeQuery();
+        rs.next();
+        
+        int total = rs.getInt("total");
+    
+        return total > 0;
+    }
+    
 
     public static void deletarInstrutors(int id) {
         try {

@@ -82,7 +82,6 @@ public class AlunoDAO {
         try {
             con.conectar();
     
-            // Verificar se o novo email já existe para outro aluno
             String verificaEmailSql = "SELECT COUNT(*) AS total FROM alunos WHERE email = ? AND id_aluno <> ?";
             PreparedStatement verificaEmailInstrucao = con.getCon().prepareStatement(verificaEmailSql);
             verificaEmailInstrucao.setString(1, a1.getEmail());
@@ -94,10 +93,9 @@ public class AlunoDAO {
     
             if (total > 0) {
                 System.out.println("Erro: O email já está em uso por outro aluno. Escolha outro email.");
-                return; // Não continua com a atualização se o email já existe
+                return;
             }
     
-            // Se o email não existe, continuar com a atualização
             String sql = "UPDATE alunos SET nome = ?, idade = ?, peso = ?, email = ?, senha = ?  WHERE id_aluno = ?";
             PreparedStatement instrucao = con.getCon().prepareStatement(sql);
     

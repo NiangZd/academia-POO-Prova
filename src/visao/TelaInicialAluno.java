@@ -37,7 +37,6 @@ public class TelaInicialAluno implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         labelUser.setText("BEM VINDO, " + UsuarioLogado.getNome());
 
-        // Centraliza o texto do labelUser
         AnchorPane.setLeftAnchor(labelUser, 0.0);
         AnchorPane.setRightAnchor(labelUser, 0.0);
         labelUser.setAlignment(Pos.CENTER);
@@ -48,11 +47,9 @@ public class TelaInicialAluno implements Initializable{
         Stage stage = (Stage) btnInstrutores.getScene().getWindow();
 
         try {
-            // Carrega o arquivo FXML da nova janela
             FXMLLoader loader = new FXMLLoader(getClass().getResource("telaInicial.fxml"));
             Parent root = loader.load();
 
-            // Cria uma nova cena
             Scene scene = new Scene(root);
 
             // Define a cena na janela atual
