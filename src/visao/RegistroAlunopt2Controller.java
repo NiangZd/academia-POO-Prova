@@ -5,6 +5,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
+import aplicacao.Aluno;
 import aplicacao.PagamentoMensalidade;
 import aplicacao.UsuarioLogado;
 import javafx.event.ActionEvent;
@@ -70,8 +72,10 @@ public class RegistroAlunopt2Controller implements Initializable {
                 valor = 60;
             }
     
+            Aluno a1 = AlunoDAO.buscarALogin(UsuarioLogado.getEmail());
+
             AlunoDAO.inserirInfoExtra(UsuarioLogado.getEmail(), idadeInt, pesoFloat);
-            PagamentoMensalidade pgm = new PagamentoMensalidade(UsuarioLogado.getId(), dataPagamento, valor);
+            PagamentoMensalidade pgm = new PagamentoMensalidade(a1.getId(), dataPagamento, valor);
             PagamentoMensalidadeDAO.inserirPagamentoMensalidade(pgm);
 
             Stage stage = (Stage) btnConcluirCad.getScene().getWindow();

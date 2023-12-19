@@ -259,6 +259,43 @@ public class FichaTreinoDAO {
         }
         return ft1;
     }
+    
+    //BUSCAR FICHA TREINO SOBRECARGA
+
+    public static FichaTreino buscarFichaTreino(int idAluno, int idInstrutor) {
+        FichaTreino ft1 = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM fichadetreino WHERE id_aluno = ? AND id_instrutor = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setInt(1, idAluno);
+            instrucao.setInt(2, idInstrutor);
+
+            System.out.println("ID do aluno: " + idAluno);
+            System.out.println("ID do instrutor: " + idInstrutor);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                int idFichaTreino = rs.getInt("id_fichadetreino");
+                String dataInicio = rs.getString("datainicio");
+                String dataFim = rs.getString("datafim");
+                String descricao = rs.getString("descricao");
+
+                ft1 = new FichaTreino(idFichaTreino, idAluno, idInstrutor, dataInicio, dataFim, descricao);
+
+                System.out.println("ID da ficha de treino encontrada: " + idFichaTreino);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar a FichaTreino: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return ft1;
+    }
+
 
     public static ArrayList<FichaTreino> retornarListaCompleta() {
         ArrayList<FichaTreino> listaFichaTreinos = new ArrayList<FichaTreino>();
@@ -286,4 +323,38 @@ public class FichaTreinoDAO {
         }
         return listaFichaTreinos;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    // FUNÇÕES JAVAFX LOGIN REGISTRO //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static FichaTreino buscarFichaTreinoPorAlu(int id) {
+        FichaTreino ft1 = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM fichadetreino WHERE id_aluno = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setInt(1, id);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                int id_aluno = rs.getInt("id_aluno");
+                int id_instrutor = rs.getInt("id_instrutor");
+                String datainicio = rs.getString("datainicio");
+                String datafim = rs.getString("datafim");
+                String descricao = rs.getString("descricao");
+
+                ft1 = new FichaTreino(id_aluno, id_instrutor, datainicio, datafim, descricao);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o FichaTreino: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return ft1;
+    }
+
 }

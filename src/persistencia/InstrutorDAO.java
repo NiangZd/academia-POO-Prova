@@ -14,8 +14,8 @@ public class InstrutorDAO{
     private static boolean verif = false;
 
    public static String getTokenaccess() {
-    return tokenAccess;
-}
+        return tokenAccess;
+    }
 
  public static boolean isVerif() {
         return verif;
@@ -256,4 +256,28 @@ public class InstrutorDAO{
         }
     }
 
+    public static Instrutor buscarNomeInstrutor(int id) {
+        Instrutor instrutor = null;
+        try {
+            con.conectar();
+    
+            String sql = "SELECT * FROM instrutores WHERE id_instrutor = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setInt(1, id);
+    
+            ResultSet rs = instrucao.executeQuery();
+    
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                instrutor = new Instrutor(nome);
+            }
+    
+        } catch (SQLException e) {
+            // Melhore a mensagem de erro ou faça um log adequado.
+            System.out.println("Erro ao buscar o instrutor: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return instrutor;
+    }
 }

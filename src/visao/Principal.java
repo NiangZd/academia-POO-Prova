@@ -17,6 +17,9 @@ public class Principal extends Application{
 		AlunoInstrutorDAO.setConexao(c1);
 		PagamentoMensalidadeDAO.setCon(c1);
 
+		c1.conectar();
+		c1.desconectar();
+
 		launch(args);
 
 	}

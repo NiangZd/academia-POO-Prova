@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import persistencia.AlunoDAO;
@@ -26,10 +27,11 @@ public class registroAlunoController {
     private TextField textFieldEmail;
 
     @FXML
-    private TextField textFieldRepSenha;
+    private PasswordField textFieldSenha;
 
     @FXML
-    private TextField textFieldSenha;
+    private PasswordField textFieldRepSenha;
+
 
     @FXML
     private TextField textFiieldNome;

@@ -5,6 +5,11 @@ public class PagamentoMensalidade {
     private int id_aluno;
     private String datapagamento;
     private int valor;
+
+    public PagamentoMensalidade(String datapagamento, int valor){
+        this.datapagamento = datapagamento;
+        this.valor = valor;
+    }
     
     public PagamentoMensalidade(int id_aluno, String datapagamento, int valor) {
         this.id_aluno = id_aluno;

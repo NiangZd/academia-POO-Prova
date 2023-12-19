@@ -1,28 +1,28 @@
 package aplicacao;
 
-public class Usuario {
+public class Usuario2 {
     private int id;
     private String nome;
     private String email;
     private String senha;
 
-    public Usuario(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
-    }
-
-    public Usuario(){
+    public Usuario2(){
         
     }
 
-    public Usuario(String nome){
-        this.nome = nome;
-    }
-
-    public Usuario(String nome, String email, String senha) {
+    public Usuario2(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+    }
+
+    public Usuario2(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+
+    public Usuario2(String nome){
+        this.nome = nome;
     }
     
     public int getId() {
@@ -49,6 +49,4 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-
 }

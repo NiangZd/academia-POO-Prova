@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import persistencia.InstrutorDAO;
@@ -28,13 +29,13 @@ public class registrarInstrutorController {
     private TextField textFieldNome;
 
     @FXML
-    private TextField textFieldSenha;
+    private PasswordField textFieldSenha;
 
     @FXML
     private TextField textFieldToken;
 
     @FXML
-    private TextField texxtFieldRepSenha;
+    private PasswordField texxtFieldRepSenha;
 
     @FXML
     void registrarNow(ActionEvent event) {

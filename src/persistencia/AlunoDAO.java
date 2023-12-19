@@ -1,5 +1,6 @@
 package persistencia;
 import aplicacao.Aluno;
+import aplicacao.Aluno2;
 import aplicacao.PagamentoMensalidade;
 
 import java.sql.SQLException;
@@ -81,9 +82,25 @@ public class AlunoDAO {
         try {
             con.conectar();
     
+            // Verificar se o novo email já existe para outro aluno
+            String verificaEmailSql = "SELECT COUNT(*) AS total FROM alunos WHERE email = ? AND id_aluno <> ?";
+            PreparedStatement verificaEmailInstrucao = con.getCon().prepareStatement(verificaEmailSql);
+            verificaEmailInstrucao.setString(1, a1.getEmail());
+            verificaEmailInstrucao.setInt(2, id);
+    
+            ResultSet resultado = verificaEmailInstrucao.executeQuery();
+            resultado.next();
+            int total = resultado.getInt("total");
+    
+            if (total > 0) {
+                System.out.println("Erro: O email já está em uso por outro aluno. Escolha outro email.");
+                return; // Não continua com a atualização se o email já existe
+            }
+    
+            // Se o email não existe, continuar com a atualização
             String sql = "UPDATE alunos SET nome = ?, idade = ?, peso = ?, email = ?, senha = ?  WHERE id_aluno = ?";
             PreparedStatement instrucao = con.getCon().prepareStatement(sql);
-            
+    
             instrucao.setString(1, a1.getNome());
             instrucao.setInt(2, a1.getIdade());
             instrucao.setFloat(3, a1.getPeso());
@@ -104,6 +121,7 @@ public class AlunoDAO {
             con.desconectar();
         }
     }
+    
     
     public static void deletarAlunos(int id) {
         try {
@@ -185,7 +203,41 @@ public class AlunoDAO {
         }
     
         return listaAlunos;
-    }   
+    }
+
+    // SOBRECARGA
+
+    public static ArrayList<Aluno2> retornarListaCID(String parteNome) {
+        ArrayList<Aluno2> listaAlunos = new ArrayList<Aluno2>();
+    
+        try {
+            con.conectar();
+            String sql = "SELECT * FROM alunos WHERE nome ILIKE ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setString(1, "%" + parteNome + "%");
+            ResultSet rs = instrucao.executeQuery();
+    
+            while (rs.next()) {
+                int id = rs.getInt("id_aluno");
+                String nome = rs.getString("nome");
+                int idade = rs.getInt("idade");
+                Float peso = rs.getFloat("peso");
+                String email = rs.getString("email");
+                String senha = rs.getString("senha");
+
+                System.out.println(id);
+            
+                Aluno2 a1 = new Aluno2(id, nome, idade, peso, email, senha);
+    
+                listaAlunos.add(a1);
+            }
+            con.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o aluno: " + e.getMessage());
+        }
+    
+        return listaAlunos;
+    }
     
     public static ArrayList<Aluno> retornarListaCompleta() {
         ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
@@ -202,8 +254,40 @@ public class AlunoDAO {
                 Float peso = rs.getFloat("peso");
                 String email = rs.getString("email");
                 String senha = rs.getString("senha");
-            
+
                 Aluno a1 = new Aluno(nome, idade, peso, email, senha);
+    
+                listaAlunos.add(a1);
+    
+            }
+            con.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o aluno: " + e.getMessage());
+        }
+    
+        return listaAlunos;
+    }
+
+    // SOBRECARGA
+
+    public static ArrayList<Aluno2> retornarListaCompletaCID() {
+        ArrayList<Aluno2> listaAlunos = new ArrayList<Aluno2>();
+    
+        try {
+            con.conectar();
+            String sql = "SELECT * FROM alunos";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            ResultSet rs = instrucao.executeQuery();
+    
+            while (rs.next()) {
+                int id = rs.getInt("id_aluno");
+                String nome = rs.getString("nome");
+                int idade = rs.getInt("idade");
+                Float peso = rs.getFloat("peso");
+                String email = rs.getString("email");
+                String senha = rs.getString("senha");
+
+                Aluno2 a1 = new Aluno2(id, nome, idade, peso, email, senha);
     
                 listaAlunos.add(a1);
     
@@ -273,8 +357,6 @@ public class AlunoDAO {
                 if (linhasAfetadas > 0) {
                     System.out.println("Inserção realizada com sucesso.");
                     setVerif(true);
-                    // Adicionar pagamento de mensalidade
-                    addPagamentoMensalidade(a1.getEmail());
                 } else {
                     System.out.println("Nenhuma linha afetada durante a inserção.");
                 }

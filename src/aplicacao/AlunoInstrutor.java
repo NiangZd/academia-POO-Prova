@@ -1,10 +1,15 @@
 package aplicacao;
 
-public abstract class AlunoInstrutor {
+public class AlunoInstrutor {
     private int id_fichadetreino;
     private int id_aluno;
     private int id_instrutor;
     
+    public AlunoInstrutor(int id_aluno, int id_instrutor) {
+        this.id_aluno = id_aluno;
+        this.id_instrutor = id_instrutor;
+    }
+
     public int getId_fichadetreino() {
         return id_fichadetreino;
     }

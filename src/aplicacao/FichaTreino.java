@@ -16,6 +16,15 @@ public class FichaTreino {
         this.descricao = descricao;
     }
 
+    public FichaTreino(int id_ficha, int id_aluno, int id_instrutor, String dataInicio, String dataFim, String descricao) {
+        this.id_ficha = id_ficha;
+        this.id_aluno = id_aluno;
+        this.id_instrutor = id_instrutor;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.descricao = descricao;
+    }
+
     public int getId_ficha() {
         return id_ficha;
     }

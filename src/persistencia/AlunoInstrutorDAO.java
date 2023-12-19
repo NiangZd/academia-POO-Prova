@@ -1,9 +1,11 @@
 package persistencia;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import aplicacao.AlunoInstrutor;
 
-public abstract class AlunoInstrutorDAO {
+public class AlunoInstrutorDAO {
     private static Conexao con;
 
     public static void setConexao(Conexao conexao) {
@@ -83,6 +85,36 @@ public abstract class AlunoInstrutorDAO {
         } finally {
             con.desconectar();
         }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    // FUNÇÕES JAVAFX LOGIN REGISTRO //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static AlunoInstrutor buscarRelacao(int id) {
+        AlunoInstrutor ai = null;
+        try {
+            con.conectar();
+
+            String sql = "SELECT * FROM alunoinstrutor WHERE id_aluno = ?";
+            PreparedStatement instrucao = con.getCon().prepareStatement(sql);
+            instrucao.setInt(1, id);
+
+            ResultSet rs = instrucao.executeQuery();
+
+            if (rs.next()) {
+                int id_aluno = rs.getInt("id_aluno");
+                int id_instrutor = rs.getInt("id_instrutor");
+            
+                ai = new AlunoInstrutor(id_aluno, id_instrutor);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o aluno: " + e.getMessage());
+        } finally {
+            con.desconectar();
+        }
+        return ai;
     }
 
 }

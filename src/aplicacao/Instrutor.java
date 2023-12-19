@@ -8,6 +8,10 @@ public class Instrutor extends Usuario{
         
     }
 
+    public Instrutor(String nome){
+        super(nome);
+    }
+
     public Instrutor(String nome, String email, String senha, int id) {
         super(nome, email, senha);
         this.id = id;
